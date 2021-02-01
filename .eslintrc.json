@@ -4,7 +4,11 @@
     "es6": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
   "settings": {
     "react": {
       "version": "detect"
@@ -23,13 +27,24 @@
     "sourceType": "module"
   },
   "parser": "babel-eslint",
-  "plugins": ["react"],
+  "plugins": [
+    "react"
+  ],
   "rules": {
     "no-unused-vars": 0,
     "no-undef": 0,
-    "indent": ["error", 2],
-    "arrow-parens": ["error", "as-needed"],
-    "semi": ["error", "always"],
+    "indent": [
+      "error",
+      2
+    ],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
     "no-console": "error",
     "react/prop-types": 0,
     "import/prefer-default-export": "off"
