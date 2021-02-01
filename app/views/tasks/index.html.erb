@@ -1,1 +1,4 @@
-<h1>Lists of tasks will appear here.</h1>
+<% @tasks.each do |task| %>
+  <%= task.id %>
+  <%= task.title %>
+<% end %>
