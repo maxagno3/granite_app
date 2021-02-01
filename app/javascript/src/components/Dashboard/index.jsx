@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { isNil, isEmpty, either } from "ramda";
 
 import Container from "components/Container";
 import ListTasks from "components/Tasks/ListTasks";
 import PageLoader from "components/PageLoader";
 import tasksApi from "apis/tasks";
-import Logger from "js-logger";
 
 const Dashboard = ({ history }) => {
   const [tasks, setTasks] = useState([]);
@@ -17,7 +16,7 @@ const Dashboard = ({ history }) => {
       setTasks(response.data.tasks);
       setLoading(false);
     } catch (error) {
-      Logger.error(error);
+      logger.error(error);
       setLoading(false);
     }
   };
