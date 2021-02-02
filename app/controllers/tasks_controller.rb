@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_user_using_x_auth_token, except: [:new, :edit]
   before_action :load_task, only: %i[show update destroy]
 
   def index

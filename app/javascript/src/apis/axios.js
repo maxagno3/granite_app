@@ -9,6 +9,12 @@ export const setAuthHeaders = (setLoading = () => null) => {
       .querySelector('[name="csrf-token"]')
       .getAttribute("content"),
   };
+  const token = localStorage.getItem("authToken");
+  const email = localStorage.getItem("authEmail");
+  if (token && email) {
+    axios.defaults.headers["X-Auth-Email"] = email;
+    axios.defaults.headers["X-Auth-Token"] = token;
+  }
   setLoading(false);
 };
 
