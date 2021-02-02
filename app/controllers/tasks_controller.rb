@@ -9,7 +9,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(task_params.merge(creator_id: @current_user.id))
     if @task.save
       render status: :ok, json: { notice: "Task was created successfully" }
     else
