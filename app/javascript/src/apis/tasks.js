@@ -8,11 +8,14 @@ const show = id => axios.get(`/tasks/${id}`);
 
 const update = ({ id, payload }) => axios.put(`/tasks/${id}`, payload);
 
+const destroy = id => axios.delete(`/tasks/${id}`);
+
 const taskApi = {
   list,
   create,
   show,
   update,
+  destroy,
 };
 
 export default taskApi;

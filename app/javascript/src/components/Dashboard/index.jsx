@@ -25,8 +25,17 @@ const Dashboard = ({ history }) => {
     history.push(`/tasks/${id}/show`);
   };
 
-  const updateTask = id => {
+  const updateTask = async id => {
     history.push(`/tasks/${id}/edit`);
+  };
+
+  const destroyTask = async id => {
+    try {
+      await tasksApi.destroy(id);
+      fetchTasks();
+    } catch (error) {
+      Logger.error(error);
+    }
   };
 
   useEffect(() => {
@@ -53,7 +62,12 @@ const Dashboard = ({ history }) => {
 
   return (
     <Container>
-      <ListTasks data={tasks} showTask={showTask} updateTask={updateTask} />
+      <ListTasks
+        data={tasks}
+        showTask={showTask}
+        updateTask={updateTask}
+        destroyTask={destroyTask}
+      />
     </Container>
   );
 };
