@@ -7,6 +7,7 @@ import { initializeLogger } from "common/logger";
 import ShowTask from "components/Tasks/ShowTask";
 import Dashboard from "components/Dashboard";
 import CreateTask from "components/Tasks/CreateTask";
+import EditTask from "components/Tasks/EditTask";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -28,6 +29,7 @@ const App = () => {
         <Route exact path="/tasks/create" component={CreateTask} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/tasks/:id/show" component={ShowTask} />
+        <Route exact path="/tasks/:id/edit" component={EditTask} />
       </Switch>
     </Router>
   );
