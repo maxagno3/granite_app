@@ -4,8 +4,17 @@ class TasksController < ApplicationController
   before_action :load_task, only: %i[show update destroy]
 
   def index
-    @tasks = TaskPolicy::Scope.new(current_user, Task).resolve
-    render status: :ok, json: { tasks: @tasks }
+    tasks = TaskPolicy::Scope.new(current_user, Task).resolve
+    render status: :ok, json: {
+    tasks: {
+      pending: tasks.organize(:pending).as_json(include: {
+        user: {
+          only: [:name, :id]
+        }
+      }),
+      completed: tasks.organize(:completed)
+    }
+  }
   end
 
   def create
@@ -46,7 +55,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :user_id)
+    params.require(:task).permit(:title, :user_id, :progress, :status)
   end
 
   def load_task
