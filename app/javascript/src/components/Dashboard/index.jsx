@@ -55,7 +55,7 @@ const Dashboard = ({ history }) => {
     try {
       const toggledStatus = status === "starred" ? "unstarred" : "starred";
       await tasksApi.update({ id, payload: { status: toggledStatus } });
-      await fetchTasks;
+      await fetchTasks();
     } catch (error) {
       logger.error(error);
     }
